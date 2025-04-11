@@ -1,0 +1,45 @@
+<form class="mt-1 ml-4 mr-4 complaint-form" [formGroup]="complaintForm" (ngSubmit)="solveComplaint()">
+    <mat-card>
+        <div class="item file-item">
+            <div class="item" appearance="fill" class="full-width">
+                <mat-label>Upload Files</mat-label>
+                <div class="file-upload-container mt-1">
+                    <input  type="file" formControlName="file" #fileInput accept="image/*" (change)="onChangeFileInput()"
+                    multiple [ngStyle]="{'display': FileWithPreviews.length === 0 ? 'block' : 'none'}" />
+
+                    <button *ngIf="FileWithPreviews.length > 0" mat-raised-button color="primary"  #fileInput class="file-select-button"
+                        (click)="onClickFileInputButton()">
+                        <mat-icon>add</mat-icon>  Add  More                                                   
+                    </button>                   
+                    <mat-error
+                        *ngIf="complaintForm.get('file')?.errors?.['required'] && complaintForm.get('file')?.touched">
+                        Files are required.
+                    </mat-error>
+                </div>
+            </div>
+        </div> 
+       <div  class="item">
+            <div *ngIf="FileWithPreviews.length > 0" style="background-color: #F5F5F5;">                          
+                <div class=" item image-preview mt-4">
+                    <div *ngFor="let file of FileWithPreviews; let i = index;" class="image-item">
+                        <img *ngIf="file.preview" [src]="file.preview" alt="Preview" />
+                        <button type="button" class="remove-btn" (click)="removeImage(i)">
+                            <mat-icon>remove_circle</mat-icon>
+                        </button>
+                        <p style="font-size: 9px;">{{ file.file.name }}</p>
+                    </div>
+                </div>
+            </div>
+       </div>
+       <div class="item">
+            <div class="d-flex justify-content-center align-items-center gap-5 mb-3">
+                <Button  class="btn btn-success btn-item item mt-2" mat-button *ngIf="data.btnType === 'Approve'" type="submit">
+                    <mat-icon>check_small</mat-icon>Approve
+                </Button>
+                <Button mat-button class="btn btn-secondary btn-item item mt-2" (click)="closeDialog()" >
+                    <mat-icon>close</mat-icon>Cancle
+                </Button>
+            </div>
+       </div>
+    </mat-card>
+</form>

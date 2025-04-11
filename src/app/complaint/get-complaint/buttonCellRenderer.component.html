@@ -1,0 +1,8 @@
+<div class="d-flex gap-2">
+    <button (click)="onViewClick()" class="btn btn-info">
+        <i class="ri-eye-fill"></i>
+    </button>
+    <button *ngIf="isEmployee()" (click)="onApproveClick()" class="btn btn-primary" [disabled] = "(params.data.status | uppercase) !== 'PENDING'">
+       <i class="ri-checkbox-fill"></i>
+    </button>
+</div>

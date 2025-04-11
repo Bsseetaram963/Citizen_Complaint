@@ -1,0 +1,21 @@
+export interface ComplaintData{
+    id:number,
+    complaintNo : string,
+    userName : string,
+    department : string,
+    ward : string,
+    employee:string,
+    seniorEmployee:string,
+    hod:string,
+    complaintType:string,
+    assignLevel:number,
+    recomplaintDescription1:string,
+    recomplaintDescription2:string,
+    recomplaintCount:number,
+    complaintRaised:Date,
+    escalateDate:Date,
+    completionDate:Date,
+    address: string,
+    description:string,
+    status : boolean
+}

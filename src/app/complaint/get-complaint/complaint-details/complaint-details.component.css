@@ -1,0 +1,51 @@
+.complaint-card {
+    width: 100%;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  .titte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .class-item{
+    position: relative;
+  }
+  .remove-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+  .remove-btn mat-icon {
+    color: red;
+  }
+  .break-word {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }

@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@ag-grid-community/styles/ag-theme-alpine.css"; /* Legacy theme */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 0, "GRAD" 0, "opsz" 40;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  /* background-color: ; */
+}
+/* In your component's CSS/SCSS file */
+
+.snack-bar-success {
+  background-color: #4caf50 !important; /* Green background for success */
+  color: white;
+}
+
+.snack-bar-error {
+  background-color: #f44336 !important; /* Red background for error */
+  color: white;
+}
+
+.snack-bar-info {
+  background-color: #2196f3; /* Blue background for info */
+  color: white;
+}
+/* Global styles for snack bars in Angular Material theme */
+
+/* Success snack bar style */
+.mat-snack-bar-container.snack-bar-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Error snack bar style */
+.mat-snack-bar-container.snack-bar-error {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Info snack bar style */
+.mat-snack-bar-container.snack-bar-info {
+  background-color: #2196f3;
+  color: white;
+}

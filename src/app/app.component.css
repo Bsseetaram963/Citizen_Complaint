@@ -1,0 +1,48 @@
+.screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.app-main-content {
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  width: 250px;
+  height: 100%;
+}
+.mat-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  z-index: 20;
+}
+.content {
+  width: 100%;
+  height: 100%;
+}
+.mat-drawer-container {
+  width: 100%;
+}
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #3f51b5;
+}
+::ng-deep .mat-drawer {
+  padding-top: 0px !important;
+}
+.footer {
+  width: 100%;
+  height: 25px;
+  background-color: #3f51b5;
+  position: fixed;
+  bottom: 0;
+  color: white;
+}
+
+.rooter-container {
+  width: 100%;
+  /* height: calc(100% - 168px); */
+  height: auto;
+}

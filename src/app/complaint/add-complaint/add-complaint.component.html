@@ -1,0 +1,108 @@
+<div class="container">
+    <form class="mt-5 complaint-form" [formGroup]="complaintForm" (ngSubmit)="submitComplaint()">
+        <div class="add-complaint-logo">
+            <h1 class="text-center">Submit a Complaint</h1>
+        </div>
+        <mat-card class="add-complaint-table">
+            <div class="item">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Select Ward</mat-label>
+                    <mat-select formControlName="wardId" (selectionChange)="onWardChange($event)">
+                        <mat-option value="">Select Ward</mat-option>
+                        <mat-option *ngFor="let  ward of wards" [value]="ward.wardId">{{ ward.wardName }}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="complaintForm.get('wardId')?.errors?.['required'] && complaintForm.get('wardId')?.touched">
+                        Ward is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Select Department</mat-label>
+                    <mat-select formControlName="departmentId" (selectionChange)="onDepartmentChange($event)">
+                        <mat-option value="">Select Department</mat-option>
+                        <mat-option *ngFor="let department of departments" [value]="department.id">{{ department.name
+                            }}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="complaintForm.get('departmentId')?.errors?.['required'] && complaintForm.get('departmentId')?.touched">
+                        Department is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Select Complaint Type</mat-label>
+                    <mat-select formControlName="complaintTypeId">
+                        <mat-option value="">Select Complaint Type</mat-option>
+                        <mat-option *ngFor="let complaintType of complaintTypes" [value]="complaintType.id">{{
+                            complaintType.name }}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="complaintForm.get('complaintTypeId')?.errors?.['required'] && complaintForm.get('complaintTypeId')?.touched">
+                        Complaint Type is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="item">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Complaint Description</mat-label>
+                    <textarea matInput formControlName="description" placeholder="Describe your complaint"
+                        rows="4"></textarea>
+                    <mat-error
+                        *ngIf="complaintForm.get('description')?.errors?.['required'] && complaintForm.get('description')?.touched">
+                        Description is required.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="complaintForm.get('description')?.hasError('minlength') && complaintForm.get('description')?.touched">
+                        Description must be at least 10 characters.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="item">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput formControlName="address" placeholder="Address" rows="4"></textarea>
+                    <mat-error
+                        *ngIf="complaintForm.get('address')?.errors?.['required'] && complaintForm.get('address')?.touched">
+                        Address is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="item file-item">
+                <div appearance="fill" class="full-width">
+                    <mat-label>Upload Files</mat-label>
+                    <div class="file-upload-container mt-1">
+                        <input  type="file" formControlName="file" #fileInput accept="image/*" (change)="onChangeFileInput()"
+                         multiple [ngStyle]="{'display': FileWithPreviews.length === 0 ? 'block' : 'none'}" />
+
+                        <button *ngIf="FileWithPreviews.length > 0" mat-raised-button color="primary"  #fileInput class="file-select-button"
+                            (click)="onClickFileInputButton()">
+                            <mat-icon>add</mat-icon>  Add  More                                                   
+                        </button>
+                        <div *ngIf="FileWithPreviews.length > 0" style="background-color: #F5F5F5;">                          
+                            <div class="image-preview mt-4">
+                                <div *ngFor="let file of FileWithPreviews; let i = index;" class="image-item">
+                                    <img *ngIf="file.preview" [src]="file.preview" alt="Preview" />
+                                    <button type="button" class="remove-btn" (click)="removeImage(i)">
+                                        <mat-icon>remove_circle</mat-icon>
+                                    </button>
+                                    <p style="font-size: 9px;">{{ file.file.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-error
+                            *ngIf="complaintForm.get('file')?.errors?.['required'] && complaintForm.get('file')?.touched">
+                            Files are required.
+                        </mat-error>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-item item mt-2">
+                <button class="btn-complaint" mat-raised-button color="primary" type="submit">Submit Complaint</button>
+            </div>
+        </mat-card>
+    </form>
+</div>

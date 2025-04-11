@@ -1,0 +1,31 @@
+<mat-sidenav-container class="mat-sidenav-container">
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <button mat-icon-button (click)="toggleSidenav()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Home / Company module</span>
+            <span class="flex-spacer"></span>
+            <button mat-icon-button>
+                <mat-icon>refresh</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>notifications_none</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>account_circle</mat-icon>`
+            </button>
+        </mat-toolbar>
+        <mat-card>
+            <mat-card-content>
+                <form (ngSubmit)="onSubmit()">
+                    <mat-form-field>
+                        <mat-label>Company</mat-label>
+                        <input matInput [(ngModel)]="user.company" name="company" required />
+                    </mat-form-field>
+                    <button mat-raised-button type="submit" color="primary">Submit</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-sidenav-content>
+</mat-sidenav-container>

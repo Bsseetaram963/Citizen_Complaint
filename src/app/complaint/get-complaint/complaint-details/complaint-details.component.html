@@ -1,0 +1,58 @@
+<div class="class-item">
+    <h2 mat-dialog-title class="titte p-2">Complaint Details</h2>
+    <button type="button" class="remove-btn" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<mat-card class="complaint-card">
+  <mat-card-content>
+    <div class="grid-container">
+      <div class="grid-item">
+        <p class="text-wrap"><strong>Complaint No:</strong> {{ data.complaintNo }}</p>
+        <p class="text-wrap"><strong>Citizen Name:</strong> {{ data.userName }}</p>
+        <p class="text-wrap"><strong>Department:</strong> {{ data.department }}</p>       
+      </div>
+
+      <div class="grid-item">
+        <p class="text-wrap"><strong>Ward:</strong> {{ data.ward }}</p>
+        <p><strong>Complaint Type:</strong> {{ data.complaintType }}</p>       
+        <p><strong>Address:</strong> {{ data.address }}</p>       
+      </div>
+
+      <div class="grid-item">
+        <p><strong>Employee:</strong> {{ data.employee ?? "N/A" }}</p>
+        <p><strong>Senior Employee Name:</strong> {{ data.seniorEmployee ?? "N/A" }}</p>
+        <p><strong>HOD:</strong> {{ data.hod ?? "N/A"}}</p>
+      </div>
+
+      <div class="grid-item">     
+        <p class="break-word"><strong>Description:</strong> {{ data.description ?? "N/A" }}</p>
+      </div>
+
+      <div class="grid-item">
+        <p class="break-word"><strong>Re-Complaint Description 1:</strong> {{ data.recomplaintDescription1 ?? "N/A" }}</p>
+      </div>
+
+      <div class="grid-item">
+        <p class="break-word"><strong>Re-Complaint Description 2:</strong> {{ data.recomplaintDescription2 ?? "N/A" }}</p>
+      </div>
+
+      <div class="grid-item">
+        <p><strong>Assign Level:</strong> {{ data.assingLevel?? "N/A" }}</p>
+        <p class="break-word"><strong>Re-Com Count:</strong> {{ data.recomplaintCount ?? "N/A" }}</p>
+        <p class="break-word"><strong>Status:</strong> {{ data.status }}</p>       
+      </div>
+
+      <div class="grid-item">
+        <p class="break-word"><strong>Raised Date:</strong> {{ data.complaintRaised ?? "N/A" }}</p>
+        <p class="break-word"><strong>Escalate Date:</strong> {{ data.escalateDate ?? "N/A"}}</p>
+        <p class="break-word"><strong>Completion Date:</strong> {{ data.completionDate ?? "N/A" }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <!-- Close button at the bottom -->
+  <mat-card-actions>
+    <button mat-button (click)="close()" style="background-color: rgb(243, 137, 137);">Close</button>
+  </mat-card-actions>
+</mat-card>

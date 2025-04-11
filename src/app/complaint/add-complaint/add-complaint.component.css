@@ -1,0 +1,105 @@
+/* Add this to your component styles or global styles */
+.full-width {
+  width: 100%;
+}
+
+.testbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+.add-complaint-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url("/public/add-complaint-logo.png");
+  background-size: cover;
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}
+
+button {
+  width: auto;
+  padding: 10px;
+  border: none;
+  background-color: #095484;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+mat-error {
+  font-size: 12px;
+  color: red;
+}
+.item {
+  display: flex;
+}
+.btn-item {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.btn-complaint {
+  background-color: #3f51b5;
+}
+.file-item{
+  margin-left: 20px;
+}
+.complaint-form{
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem !important; 
+}
+.add-complaint-table {
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-start;
+}
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+.image-item{
+  position: relative;
+}
+.remove-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: transparent;
+}
+.remove-btn mat-icon {
+  color: red;
+}
+
+
+
+
+
+
+
+
+
+
+

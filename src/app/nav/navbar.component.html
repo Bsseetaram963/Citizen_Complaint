@@ -1,0 +1,93 @@
+<mat-sidenav #sidenav mode="side" opened>
+  <mat-toolbar color="primary">
+    <span>Menus</span>
+  </mat-toolbar>
+  <mat-nav-list>
+    <mat-list-item routerLink="dashboard">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+  <div *ngIf="this.user?.role === 'User'">        
+    <mat-list-item routerLink="search">
+      <mat-icon>manage_search</mat-icon>
+      <span>Search</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item routerLink="fill-complaint">
+      <mat-icon>add_circle</mat-icon>
+      <span>Fill Complaint</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item routerLink="complaints">
+      <mat-icon>description</mat-icon>
+      <span>Complaints</span>
+    </mat-list-item>
+  </div>
+
+    <!-- Complaint Section - Expandable -->
+    <mat-expansion-panel *ngIf="this.user?.role === 'Employee'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>work</mat-icon>
+          <span>Complaint</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item routerLink="fill-complaint">
+          <mat-icon>add_circle</mat-icon>
+          <span>Fill Complaint</span>
+        </mat-list-item>
+        <mat-list-item routerLink="complaints">
+          <mat-icon>description</mat-icon>
+          <span>Complaints</span>
+        </mat-list-item>
+        <mat-list-item routerLink="reopen-complaint">
+          <mat-icon>reopen_window</mat-icon>
+          <span>ReOpenComplaint</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+
+    <!-- Department Section - Expandable -->
+    <mat-expansion-panel *ngIf="this.user?.role === 'Employee'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>work</mat-icon>
+          <span>Department</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item routerLink="departments">
+          <mat-icon>description</mat-icon>
+          <span>Departments</span>
+        </mat-list-item>       
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="this.user?.role === 'Employee'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>work</mat-icon>
+          <span>Ward</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item routerLink="wards">
+          <mat-icon>description</mat-icon>
+          <span>Wards</span>
+        </mat-list-item>        
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-divider></mat-divider>
+    <mat-list-item (click)="logout()">
+      <mat-icon class="material-symbols-outlined">assignment_add</mat-icon>
+      <span>logout</span>
+    </mat-list-item>
+  </mat-nav-list>
+
+  <button mat-button (click)="closeSidenav()">Close Sidenav Left</button>
+</mat-sidenav>
