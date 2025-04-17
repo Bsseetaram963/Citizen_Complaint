@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../enviroment/enviroment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,16 +18,16 @@ export class DepartmentService {
     return this.http.get<any[]>(
       `${this.baseUrl}/Department/get-department-by-id`
     );
+  }  
+  updateDepartment(updateDepartmentModel:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' 
+    });
+    console.log("Update ward Service : ",updateDepartmentModel);
+    return this.http.put<any>(`${this.baseUrl}/Department/update-department`,updateDepartmentModel); 
   }
-  // addDepartment() {
-  //   return this.http.post(`${this.baseUrl}/Department/add-department`);
-  // }
-
-  // updateDepartment() {
-  //   return this.http.put(`${this.baseUrl}/Department/update-department`);
-  // }
-
-  deleteDepartment() {
-    return this.http.delete(`${this.baseUrl}/Department/remove-department`);
+  deleteDepartment(departmentId:any):Observable<any>{        
+    const params = new HttpParams().set("departmentId",departmentId);        
+    return this.http.delete<any>(`${this.baseUrl}/Department/remove-department`,{params});
   }
 }

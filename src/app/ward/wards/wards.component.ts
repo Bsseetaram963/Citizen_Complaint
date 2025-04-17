@@ -7,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DepartViewUpdateComponent } from '../../common/depart-view-update/depart-view-update.component';
 import { WardViewUpdateComponent } from '../../common/ward-view-update/ward-view-update.component';
+import { commonPopupComponent } from '../../common/common-popup/common-popup.component';
+import { DeleteCommonComponent } from '../../common/delete-common/delete-common.component';
 
 export interface WardApiResponse{
   wardId:number;
@@ -96,7 +98,16 @@ export class WardsComponent implements AfterViewInit, OnInit {
       });
      }
    
-     delete(row: WardApiResponse) {
+     deleteWard(row: WardApiResponse) {
+      console.log("row for delte :",row);
+      const dialogRef = this.matDialog.open(DeleteCommonComponent,{
+        width:"400px",
+        data: {wardId :row.wardId,btnType:"delete"}       
+      });
+      dialogRef.componentInstance.parentCompent.subscribe(() => {
+        this.getAllWardData(); 
+        dialogRef.close();
+      });
        console.log('Delete clicked for', row);
      }
 }

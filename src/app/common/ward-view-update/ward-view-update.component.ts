@@ -44,7 +44,9 @@ export class WardViewUpdateComponent implements OnInit {
       wardNumber : this.data.ward.wardNumber,
       wardName : this.data.ward.wardName
       });
+      console.log("departmentIds : ",this.data.ward.departmentIds);
      this.depInWard = this.data.ward.departmentIds.map((department: { id: number, name: string }) => department.name);
+     console.log(" this.depInWard : ",this.depInWard)
      this.departmentService.getAllDepartments().subscribe(
       (data: DepartmentData) => {
         this.originalDepData = data.values.map(({ departmentId, departmentName }) => ({

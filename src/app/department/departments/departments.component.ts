@@ -4,6 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DepartmentService } from '../../services/department.service';
 import { SharedModule } from '../../shared/shared.module';
+import { MatDialog } from '@angular/material/dialog';
+import { DepartViewUpdateComponent } from '../../common/depart-view-update/depart-view-update.component';
+import { DeleteCommonComponent } from '../../common/delete-common/delete-common.component';
+import { WardApiResponse } from '../../ward/wards/wards.component';
 
 export interface DepartmentApiResponse {
   departmentId: number;
@@ -22,22 +26,24 @@ export interface DepartmentData {
 export class DepartmentsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['departmentId', 'departmentName', 'actions'];
   dataSource: MatTableDataSource<DepartmentApiResponse>;
-  departmentData?: DepartmentApiResponse[];
+  departmentData!: DepartmentApiResponse[];
+  departmentDataForAgGrid?: DepartmentApiResponse[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private departmentService: DepartmentService) {
+  constructor(private departmentService: DepartmentService,private matDialog:MatDialog) {
     this.dataSource = new MatTableDataSource<DepartmentApiResponse>([]);
   }
 
   ngOnInit(): void {
-    this.getDepartment();
+    this.getAllDepartment();
   }
-  getDepartment(){
+  getAllDepartment(){
     this.departmentService.getAllDepartments().subscribe(
       (data: DepartmentData) => {
-        this.departmentData = data.values.map(({ departmentId, departmentName }) => ({
+        this.departmentData = data.values;
+        this.departmentDataForAgGrid = data.values.map(({ departmentId, departmentName }) => ({
           departmentId,
           departmentName,
         }));
@@ -65,14 +71,44 @@ export class DepartmentsComponent implements AfterViewInit, OnInit {
     }
   }
   view(row: DepartmentApiResponse) {
-    console.log('View clicked for', row);
+    console.log("row : ",row);
+    const dialogRef = this.matDialog.open(DepartViewUpdateComponent,{
+           width:'700px',
+           height:'600px',
+           data: {
+            department:this.departmentData.find((department)=>(department.departmentId == row.departmentId)),          
+             isUpdateMode:false
+           },
+         }); 
   }
 
   update(row: DepartmentApiResponse) {
-    console.log('Update clicked for', row);
+      const dialogRef = this.matDialog.open(DepartViewUpdateComponent,{
+                        width:'800px',
+                        disableClose:true,
+                        height:'550px',
+                        data: {
+                        department:this.departmentData.find((department)=>(department.departmentId == row.departmentId)),          
+                          isUpdateMode:true
+                        }
+                   });
+    dialogRef.afterClosed().subscribe(result=>{
+      if(result !== undefined && result){
+        this.getAllDepartment();          
+        dialogRef.close();
+      }
+    }); 
   }
 
   delete(row: DepartmentApiResponse) {
-    console.log('Delete clicked for', row);
-  }
+        const dialogRef = this.matDialog.open(DeleteCommonComponent,{
+        width:"400px",
+        data: {departmentId :row.departmentId,btnType:"delete"}       
+      });
+      dialogRef.afterClosed().subscribe(result=>{
+        this.getAllDepartment();
+        dialogRef.close();
+      })
+      console.log('Delete clicked for', row);
+    }
 }
