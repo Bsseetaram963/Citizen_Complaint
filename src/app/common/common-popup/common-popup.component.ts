@@ -21,6 +21,7 @@ export class commonPopupComponent{
     ){}
 
    approveComplaint(){
+    debugger;
      this.complaintService.approveComplaint(this.data.complaintId).subscribe(
       (res)=>{
              this.router.navigate(["complaints"]);

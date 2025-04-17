@@ -140,7 +140,7 @@ export class GetComplaintComponent implements OnInit {
       disableClose:true,
       data: selectedData
     })
-
+     debugger;
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined && result) {
         this.getComplaints();
