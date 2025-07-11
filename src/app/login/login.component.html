@@ -8,7 +8,7 @@
   <form *ngIf="isLoginForm" class="login" [formGroup]="signInForm" (ngSubmit)="signIn()">
     <mat-form-field class="mb-3 w-100">
       <mat-label>Email</mat-label>
-      <input matInput type="email" formControlName="email" placeholder="User Email" />
+      <input matInput type="email" formControlName="email" placeholder="User Email" autocomplete="current-email"/>
       <mat-error *ngIf="signInForm.get('email')?.errors?.['required'] && signInForm.get('email')?.touched">
         Email is required
       </mat-error>
@@ -19,7 +19,7 @@
 
     <mat-form-field class="mb-3 w-100">
       <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="Password" />
+      <input matInput type="password" formControlName="password" placeholder="Password"  autocomplete="current-password"/>
       <mat-error *ngIf="signInForm.get('password')?.errors?.['required'] && signInForm.get('password')?.touched">
         Password is required
       </mat-error>
@@ -69,7 +69,7 @@
 
     <mat-form-field class="mb-3 w-100">
       <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="Password" />
+      <input matInput type="password" formControlName="password" placeholder="Password"  autocomplete="current-password" />
       <mat-error *ngIf="signUpForm.get('password')?.hasError('required') && signUpForm.get('password')?.touched">
         Password is required
       </mat-error>

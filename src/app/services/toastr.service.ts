@@ -1,37 +1,17 @@
-import { Component, inject, Injectable } from '@angular/core';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core';
+import { ToasterComponent } from '../common/toaster/toaster.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastrService {
-  private _snackBar = inject(MatSnackBar);
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-  openSnackBar(message: string, type: 'success' | 'error' | 'info' = 'info') {
-    let panelClass = '';
+  private toaster!: ToasterComponent;
 
-    switch (type) {
-      case 'success':
-        panelClass = 'snack-bar-success';
-        break;
-      case 'error':
-        panelClass = 'snack-bar-error';
-        break;
-      case 'info':
-        panelClass = 'snack-bar-info';
-        break;
-    }
+  register(toaster: ToasterComponent) {
+    this.toaster = toaster;
+  }
 
-    this._snackBar.open(message, 'Close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: 900,
-      panelClass: [panelClass], 
-    });
+  show(message: string) {
+    this.toaster?.show(message);
   }
 }

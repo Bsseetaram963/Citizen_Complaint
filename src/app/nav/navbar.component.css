@@ -1,8 +1,106 @@
-.mat-drawer {
-  height: 100%;
+.example-headers-align {
   width: 100%;
-  color: white;
+  background-color: #f5f5f5;
+}
+.mat-expansion-panel{
+  border-radius: inherit;
+}
+.mat-expansion-panel-spacing{
+  margin: 0px 0px !important;
+}
+.project-title{
+  background-color: #3f51b5;
+  padding: 0px;
+  color:white;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mat-expansion-panel-header{
+  padding:0px 5px;
+} 
+.mat-expansion-panel-body{
+  height: auto;
+  padding :0px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
   position: relative;
-  padding-top: 20px;
   overflow: hidden;
+  z-index: 0;
+  /* color:black; */
+  font-size: 600;
+}
+mat-list-item{
+  padding :0px !important;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 600;
+}
+ mat-list-item a{
+  text-decoration: none;
+  color: black;
+ }
+ mat-list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #e4e5e7;
+  transition: width 0.3s ease;
+  z-index: -1; 
+}
+mat-list-item:hover::before {
+  width: 100%;
+}
+mat-list-item:hover {
+  color: black !important;
+}
+mat-list-item:active{
+  color: #3f51b5;
+}
+
+.mat-expansion-indicator svg,
+.mat-expansion-indicator path {
+  fill: white !important;
+}
+.mat-expansion-indicator::after{
+   fill: white !important;
+    color: white !important;
+}
+ mat-panel-title{
+  gap: 15px;
+  font-size: 16px;
+  display: flex;
+  color: white !important;
+}
+mat-icon{
+  margin-left: 20px;
+}
+mat-expansion-panel-header{
+  padding: 15px;
+  background-color: #3f51b5 !important;
+  color: white !important;
+}
+mat-expansion-panel-header:hover {
+  background: #223080 !important;
+  transition: background-color 0.3s ease !important;
+}
+mat-expansion-panel-header.active {
+  background:  #3f51b5 !important;
+  color: white !important;
+  font-weight: 700 !important;
 }

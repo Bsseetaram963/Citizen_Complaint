@@ -72,11 +72,14 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleSuccess(response: HttpResponse<any>) {
+    // this.toastrService.show(response.body.message+" - "+response.status);
+    console.log("handleSuccess")
     if (response.body.message) {  
-       this.toastrService.openSnackBar(response.body.message+" - "+response.status);
+      console.log("handleSuccessm inner")
+       this.toastrService.show(response.body.message+" - "+response.status);
     }
     // switch (response.status) {
-    //   case 200:
+    //   case 200:s
     //     console.log('Request successful.');
     //     break;
     //   case 201:
@@ -94,7 +97,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleError(error: HttpErrorResponse) { 
-    this.toastrService.openSnackBar(error.error.Message+" - "+error.status);
+    this.toastrService.show(error.error.Message+" - "+error.status);
     // switch (error.status) {
     //   case 400:
     //     console.error('Bad request.');

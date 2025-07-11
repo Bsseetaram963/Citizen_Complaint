@@ -5,11 +5,11 @@
     </p>
     <span class="d-flex justify-content-center mb-2" style="font-size: 11px;">Remember all data  of this ward be will deleted.</span>
 </div>
-<div class="d-flex justify-content-center align-items-center gap-5 mb-3">
-  <Button mat-button *ngIf="data.btnType === 'delete'" class="btn btn-danger" (click)="deleteThing()">
-      <mat-icon>delete</mat-icon>delete
+<div class="d-flex justify-content-center align-items-center gap-5 mt-4">
+  <Button mat-button *ngIf="data.btnType === 'delete'" class="d-flex justify-content-center align-items-center btn btn-danger" (click)="deleteThing()">
+      <mat-icon>delete</mat-icon><span>Delete</span>
   </Button>
-  <Button mat-button class="btn btn-secondary" (click)="closeDialog()" >
-      <mat-icon>close</mat-icon>Cancle
+  <Button mat-button class="d-flex justify-content-center align-item-center btn btn-secondary" (click)="closeDialog()" >
+      <mat-icon>close</mat-icon><span>Cancle</span>
   </Button>
 </div>

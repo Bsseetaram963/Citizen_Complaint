@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DepartmentsComponent } from './department/departments/departments.component';
 import { ComplaintDetailsComponent } from './complaint/get-complaint/complaint-details/complaint-details.component';
 import { WardsComponent } from './ward/wards/wards.component';
+import { ComplaintTypeComponent } from './complaint-type/complaint-type.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,8 +21,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'addComplaint', component: AddComplaintComponent },
   { path: 'complaints', component: GetComplaintComponent },
-  {path:'complaint-details/:complaintNo',component:ComplaintDetailsComponent,},
-  {path:'wards',component:WardsComponent,}
+  { path:'complaint-details/:complaintNo',component:ComplaintDetailsComponent,},
+  { path:'wards',component:WardsComponent,},
+  { path:'complaintType',component:ComplaintTypeComponent}  
 ];
 
 export class AppRoutingModule {}
