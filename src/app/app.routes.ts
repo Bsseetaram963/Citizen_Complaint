@@ -10,6 +10,7 @@ import { DepartmentsComponent } from './department/departments/departments.compo
 import { ComplaintDetailsComponent } from './complaint/get-complaint/complaint-details/complaint-details.component';
 import { WardsComponent } from './ward/wards/wards.component';
 import { ComplaintTypeComponent } from './complaint-type/complaint-type.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -23,7 +24,8 @@ export const routes: Routes = [
   { path: 'complaints', component: GetComplaintComponent },
   { path:'complaint-details/:complaintNo',component:ComplaintDetailsComponent,},
   { path:'wards',component:WardsComponent,},
-  { path:'complaintType',component:ComplaintTypeComponent}  
+  { path:'complaintType',component:ComplaintTypeComponent},
+  { path:'profile',component:ProfileComponent}
 ];
 
 export class AppRoutingModule {}

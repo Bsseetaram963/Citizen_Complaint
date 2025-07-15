@@ -30,7 +30,8 @@ export class HeaderComponent  implements OnInit{
       '/login': 'Login',
       '/addComplaint': 'Add Complaint',
       '/wards': 'Wards',
-      '/complaintType': 'Complaint Type'
+      '/complaintType': 'Complaint Type',
+      '/profile':'Profile'
     };
 
     constructor(private authService: AuthService,private router:Router) {}

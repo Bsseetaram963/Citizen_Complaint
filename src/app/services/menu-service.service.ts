@@ -47,7 +47,7 @@ export class MenuItemService {
         icon: 'work',
         routerLinks: [{ label: 'Complaint Types Content', path: 'complaintType' }],
         roles: ['Employee']
-      }
+      },      
     ];
   }
 }

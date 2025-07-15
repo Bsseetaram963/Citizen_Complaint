@@ -1,8 +1,14 @@
 <mat-accordion class="example-headers-align" multi #accordion="matAccordion">
   <div class="project-title">
-    <h4>
+    <h4 routerLink="dashboard" style="cursor: pointer;">
       Citizen Complaint
     </h4>
+  </div>
+  <div class="profile-image" style="height: 120px;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+       <img class="avtar-img" src="assets/avtar-logo.png" alt="logo" width="80" height="80" routerLink="profile" />  
+       <h5>Pankaj</h5>
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div *ngFor="let item of menuItems">

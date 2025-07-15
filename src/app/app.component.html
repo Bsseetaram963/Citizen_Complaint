@@ -1,5 +1,4 @@
-
-  <mat-drawer-container class="example-container" autosize>
+   <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <app-navbar [drawer]="drawer" *ngIf="isAuthenticated" class="navbar"></app-navbar>      
     </mat-drawer>  
@@ -8,7 +7,7 @@
       <div class="content-wrapper  container">
         <app-loader></app-loader>
         <app-toaster #toaster></app-toaster>
-        <router-outlet></router-outlet>
+        <router-outlet ></router-outlet>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
