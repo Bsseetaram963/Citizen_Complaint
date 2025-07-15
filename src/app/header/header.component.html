@@ -1,0 +1,21 @@
+<div class="header row d-flex">
+        <div class="col-6 d-flex align-items-center">
+            <button *ngIf="isAuthenticated" class="mat-btn white" (click)="toggleDrawer()">
+                <mat-icon class="material-symbols-outlined">menu</mat-icon>
+            </button> 
+            <h5 class="white">{{currentMenuName}}</h5>       
+        </div>
+        <div class="col-2 d-flex justify-content-center">          
+        </div>
+        <div class="profile-nav-icon col-3 d-flex justify-content-end">
+            <button class="btn white" >
+                <mat-icon>refresh</mat-icon>
+            </button>
+            <button class="btn white" >
+                <mat-icon>notifications_none</mat-icon>
+            </button>
+            <button class="btn white" [routerLink]="'/profile'">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </div>
+</div>

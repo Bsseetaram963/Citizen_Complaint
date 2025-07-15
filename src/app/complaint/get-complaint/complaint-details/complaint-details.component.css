@@ -1,5 +1,8 @@
 .complaint-card {
     width: 100%;
+    height: auto;
+    border: #3f51b5 solid 7px;
+    border-radius: 0;
   }
   
   .grid-container {
@@ -48,4 +51,8 @@
   .break-word {
     word-wrap: break-word;
     overflow-wrap: break-word;
+  }
+  .compaint-details{
+    background-color: #3f51b5 ;
+    color: white;
   }

@@ -12,12 +12,6 @@ body {
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 0, "GRAD" 0, "opsz" 40;
 }
-
-.mat-mdc-snack-bar-container .mdc-snackbar__surface {
-  /* background-color: ; */
-}
-/* In your component's CSS/SCSS file */
-
 .snack-bar-success {
   background-color: #4caf50 !important; /* Green background for success */
   color: white;
@@ -51,3 +45,45 @@ body {
   background-color: #2196f3;
   color: white;
 }
+.white{
+  color:white;
+}
+.blue{
+  color:#3f51b5;
+}
+.green-snackbar {
+  background: rgb(65, 252, 134);
+  color: white;
+}
+.green-snackbar button {
+  background-color: rgb(65, 252, 134);
+  color: white;
+  border: none;
+}
+.red-snackbar {
+  background: #F44336;
+  color: white;
+}
+.red-snackbar button {
+  background-color: #F44336;
+  color: white !important;
+  border: none;
+}
+/* .mat-mdc-snack-bar-container .mdc-snackbar__surface{
+  background-color: none !important;
+  color: Black;
+} */
+
+/* .mat-expansion-indicator {
+  color: white !important;
+}
+
+.mat-expansion-indicator svg {
+  fill: white !important;
+  stroke: white !important;
+}
+
+.mat-expansion-indicator path {
+  fill: white !important;
+  stroke: white !important;
+} */

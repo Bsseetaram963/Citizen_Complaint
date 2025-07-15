@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,11 +10,9 @@ import { Route, Router } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { LoginService } from '../services/login.service';
 import { AuthService } from '../services/auth.service';
-import { firstValueFrom } from 'rxjs';
 import { messageResponse } from '../Models/response';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from '../services/toastr.service';
-import { ComplaintService } from '../services/complaint-service';
 
 @Component({
   selector: 'app-login',
@@ -29,8 +27,7 @@ export class LoginComponent implements OnInit {
   tokenObject: any;
   isLoginForm: any;
   response!: messageResponse;
-
-  constructor(
+  constructor(    
     private logInSignUpService: LoginService,
     private router: Router,
     private authService: AuthService,
@@ -55,8 +52,8 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
     });
   }
-
   ngOnInit(): void {
+    console.log(" login inti");
     this.authService.authStatus.next(false);
     localStorage.clear();
     this.signInForm.reset();
@@ -94,14 +91,15 @@ export class LoginComponent implements OnInit {
         if (isValid) {
           this.signInForm.reset();
           this.authService.authStatus.next(true);
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['dashboard']);          
+          this.toastrService.show('Logged out successfully.');
         } else {
           console.log('Invalid credentials');
         }
       },
       error: (err) => {
         let errorMessage = JSON.parse(err.error);
-         this.toastrService.openSnackBar(errorMessage.Message, 'error');
+         this.toastrService.show(errorMessage.Message);
         this.router.navigate(['login']);
       },
     });
@@ -111,11 +109,11 @@ export class LoginComponent implements OnInit {
       next: (res) => {
         this.router.navigate(['login']);
         this.signInForm.reset();
-        this.toastrService.openSnackBar(res.message, 'success');
+        this.toastrService.show(res.message);
       },
       error: (err) => {
         this.router.navigate(['login']);
-        this.toastrService.openSnackBar(err.error?.Message, 'error');
+        // this.toastrService.openCustomToast(err.error?.Message);
       },
     });
   }

@@ -1,0 +1,75 @@
+<mat-card class="profile-wrapper">
+  <mat-card-header class="header">
+    <div>
+      <h3>Profile</h3>
+      <p>Manage your account settings and personal information</p>
+    </div>
+  </mat-card-header>
+  @for (user of users; track user.id) {
+    <p>{{ user.name }}</p>
+  }
+  <mat-card-content class="profile-content">
+    <mat-card class="left-section">
+      <div class="avatar-wrapper">
+        <img src="assets/home.png" alt="Avatar" class="avatar" />
+        <h3>Admin User</h3>
+        <span class="role-label mat-elevation-z2">Administrator</span>
+      </div>
+
+      <div class="info">
+        <p><mat-icon>email</mat-icon> admin.gov</p>
+        <p><mat-icon>phone</mat-icon> +1 (555) 123-4567</p>
+        <p><mat-icon>location_on</mat-icon> City Hall, Main Office</p>
+        <p><mat-icon>calendar_today</mat-icon> Member since Jan 2024</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="right-section">
+      <h4 style="padding: 30px">Edit Profile</h4>
+      <form class="profile-form" style="padding: 30px">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput value="Admin" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput value="User" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput value="admin@complaint.gov" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput value="+1 (555) 123-4567" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Month and Year</mat-label>
+          <input matInput [matDatepicker]="dp" [formControl]="date" />
+          <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)" panelClass="example-month-picker">
+          </mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <textarea matInput rows="2"> City Hall, Main Office, Downtown </textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Bio</mat-label>
+          <textarea matInput rows="3">Experienced administrator managing the complaint management system.</textarea>
+        </mat-form-field>
+
+        <div class="button-group">
+          <button mat-flat-button color="primary">Save Changes</button>
+          <button mat-stroked-button color="warn">Cancel</button>
+        </div>
+      </form>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
