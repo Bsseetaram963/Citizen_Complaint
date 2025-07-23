@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
-import { LoaderComponent } from './loader/loader.component';
-import { NavbarComponent } from './nav/navbar.component';
+import { NavbarComponent } from './layout/nav/navbar.component';
+import { HeaderComponent } from './layout/header/header.component';
 import { SharedModule } from './shared/shared.module';
-import { AuthService } from './services/auth.service';
-import { HeaderComponent } from "./header/header.component";
-import { ToasterComponent } from "./common/toaster/toaster.component";
-import { ToastrService } from './services/toastr.service';
+import { ToasterComponent } from './shared/components/toaster/toaster.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { AuthService } from './shared/services/auth.service';
+import { ToastrService } from './shared/services/toastr.service';
 @Component({
   standalone: true,
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   showFiller = false;
   @ViewChild('toaster') toaster!: ToasterComponent;
   constructor(private authService: AuthService,
-    private cdr: ChangeDetectorRef,private toastrService: ToastrService
+    private cdr: ChangeDetectorRef,private toastrService: ToastrService 
   ) {}
 
   ngAfterViewInit(): void {

@@ -1,31 +1,59 @@
 import { Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
-import { GetComplaintComponent } from './complaint/get-complaint/get-complaint.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DepartmentsComponent } from './department/departments/departments.component';
-import { ComplaintDetailsComponent } from './complaint/get-complaint/complaint-details/complaint-details.component';
-import { WardsComponent } from './ward/wards/wards.component';
-import { ComplaintTypeComponent } from './complaint-type/complaint-type.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { authGuard } from './shared/guard/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'fill-complaint', component: AddComplaintComponent },
-  { path: 'complaints', component: GetComplaintComponent },
-  { path: 'departments', component: DepartmentsComponent },
-  { path: 'search', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'addComplaint', component: AddComplaintComponent },
-  { path: 'complaints', component: GetComplaintComponent },
-  { path:'complaint-details/:complaintNo',component:ComplaintDetailsComponent,},
-  { path:'wards',component:WardsComponent,},
-  { path:'complaintType',component:ComplaintTypeComponent},
-  { path:'profile',component:ProfileComponent}
+  { path: '',     
+    loadComponent:()=> import('./auth/login/login.component').then(m=>m.LoginComponent), 
+  },
+  {
+    path:'login',
+    loadComponent:()=> import('./auth/login/login.component').then(m=>m.LoginComponent)
+  },
+  {  
+    path: 'dashboard',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./dashboard/dashboard.component').then(m=>m.DashboardComponent)
+  },
+  {  
+    path: 'addComplaint',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/complaint/add-complaint/add-complaint.component').then(m=>m.AddComplaintComponent)
+  },
+  {
+    path: 'complaints',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/complaint/get-complaint/get-complaint.component').then(m=>m.GetComplaintComponent)
+  },
+  {
+    path: 'departments',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/department/departments/departments.component').then(m=>m.DepartmentsComponent)
+  },  
+    {
+    path: 'fill-complaint',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/complaint/add-complaint/add-complaint.component').then(m=>m.AddComplaintComponent)
+  },
+  {
+    path: 'complaint-details/:complaintNo',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/complaint/get-complaint/complaint-details/complaint-details.component').then(m=>m.ComplaintDetailsComponent)
+  },
+  {
+    path: 'wards',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/ward/wards/wards.component').then(m=>m.WardsComponent)
+  },
+  {
+    path: 'complaintType',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/complaint-type/complaint-type.component').then(m=>m.ComplaintTypeComponent)
+  },
+  {
+    path: 'profile',
+    canActivate:[authGuard],
+    loadComponent:()=> import('./common/profile/profile.component').then(m=>m.ProfileComponent)
+  },
 ];
 
 export class AppRoutingModule {}
