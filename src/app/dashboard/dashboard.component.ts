@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CommonService } from '../services/common.service';
+import { CommonService } from '../shared/services/common.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject, inject, OnInit } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ComplaintService } from '../../services/complaint-service';
 import { Router } from '@angular/router';
+import { ComplaintService } from '../../shared/services/complaint-service';
 
 @Component({
   selector: 'app-common-popup',

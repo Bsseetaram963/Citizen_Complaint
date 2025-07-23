@@ -1,0 +1,54 @@
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 400px;
+  width: 100%;
+  background-color: #3f51b5;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px black;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-radio-button {
+  font-size: 0.9rem;
+}
+
+.mat-button {
+  font-weight: bold;
+}
+p {
+  color: white;
+}
+.googlelogin-section{
+  text-transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  background-color: white !important;
+  color: #444;
+  border: 1px solid #ccc;
+}
+.google-login {
+  font-weight: 500;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* gap between icon and text */
+
+}
+
+.google-login:hover {
+  background-color: #f7f7f7;
+}
+
+.google-login img {
+  width: 20px;
+  height: 20px;
+}

@@ -3,10 +3,9 @@ import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { commonPopupComponent } from '../common-popup/common-popup.component';
-import { ComplaintService } from '../../services/complaint-service';
 import { Router } from '@angular/router';
-import { WardService } from '../../services/ward.service';
-import { DepartmentService } from '../../services/department.service';
+import { WardService } from '../../shared/services/ward.service';
+import { DepartmentService } from '../../shared/services/department.service';
 
 @Component({
   selector: 'app-delete-common',

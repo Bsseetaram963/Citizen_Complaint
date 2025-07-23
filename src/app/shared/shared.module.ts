@@ -21,7 +21,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { ButtonCellRendererComponent } from '../complaint/get-complaint/buttonCellRenderer.component';
 import {
   CdkDragDrop,
   CdkDrag,
@@ -30,6 +29,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { ButtonCellRendererComponent } from '../common/complaint/get-complaint/buttonCellRenderer.component';
+
 
 @NgModule({
   declarations: [],
