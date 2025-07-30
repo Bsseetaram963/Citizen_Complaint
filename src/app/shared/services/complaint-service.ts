@@ -23,6 +23,7 @@ export class ComplaintService {
     return this.http.post<any>(`${this.baseUrl}/Complaint/add-complaint`,addComplaintData)
   } 
   getComplaints(){
+    console.log("Excecuted .getComplaints");
     return this.http.get(`${this.baseUrl}/Complaint/get-all-complaints`);
   }
   approveComplaint(solveComplaint:any) : Observable<any>{

@@ -52,8 +52,9 @@ export class GetComplaintComponent implements OnInit {
     this.getComplaints();
   }
      getComplaints(){
+      console.log("getComplaints : Worling ");
       this.complaintService.getComplaints().subscribe({
-        next: (data: any) => {
+        next: (data: any) => {      
           this.rowData = data.values.map((complaint: any) => ({               
             complaintID: complaint.id,     
             complaintNo: complaint.complaintNo,
@@ -75,6 +76,7 @@ export class GetComplaintComponent implements OnInit {
             description: complaint.description,
             status: complaint.status ? 'Approved' : 'Pending',
           }));
+         console.log("Data is : ",data.values)
         },
         error: (err) => {
           console.error('Error fetching complaints', err);
@@ -106,10 +108,6 @@ export class GetComplaintComponent implements OnInit {
     filter: 'agTextColumnFilter',
     floatingFilter: true,
   };
-  // rowSelection: RowSelectionOptions | 'single' | 'multiple' = {
-  //   mode: 'multiRow',
-  //   headerCheckbox: false,
-  // };
   paginationPageSize = 14;
   paginationPageSizeSelector: number[] | boolean = [15, 25, 40, 60];
 

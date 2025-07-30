@@ -51,8 +51,7 @@ export class HeaderComponent  implements OnInit{
 
         this.currentMenuName = this.routeTitleMap[matchedPath || ''] || 'Citizen Complaint';
       });
-      this.cr_route = this.router.url;
-      console.log("current route : ",this.cr_route);
+      this.cr_route = this.router.url;      
       this.authService.authStatus.subscribe((value) => {
         this.isAuthenticated = value;
       });

@@ -5,9 +5,8 @@ import { AuthService } from '../services/auth.service';
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state : RouterStateSnapshot) => {
   const authService = inject(AuthService);
-  const router = inject(Router);
-  const isAuthenticated = authService.isAuthenticated();
-   console.log('======================= Auth Guard executed.=======================');
+  const router = inject(Router);     
+  const isAuthenticated = authService.isAuthenticated();   
   if(!isAuthenticated){
     localStorage.setItem('returnUrl',state.url);
     router.navigate(['/login']);

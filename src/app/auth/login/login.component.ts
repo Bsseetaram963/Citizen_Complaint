@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
-  NgForm,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -14,6 +13,12 @@ import { LoginService } from '../../shared/services/login.service';
 import { ToastrService } from '../../shared/services/toastr.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { environment } from '../../../enviroment/enviroment';
+
+interface CredentialResponse {
+  credential: string;
+  select_by: string;
+  clientId: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -28,6 +33,7 @@ export class LoginComponent implements OnInit {
   tokenObject: any;
   isLoginForm: any;
   response!: messageResponse;
+
   constructor(    
     private logInSignUpService: LoginService,
     private router: Router,
@@ -61,18 +67,64 @@ export class LoginComponent implements OnInit {
     this.signUpForm.reset();
     this.logInSignUpService.loginForm.subscribe((value) => {
       this.isLoginForm = value;
-    });
-  }
+    }); 
+    //   window.google.accounts.id.initialize({
+    //   client_id: '529116575556-qjbcvjr5hamcik1883fv22r9h6r6ulgi.apps.googleusercontent.com',
+    //   callback: this.handleCredentialResponse.bind(this)
+    // });
+
+    // window.google.accounts.id.renderButton(
+    //   document.getElementById('google-btn'),      
+    //   { theme: 'outline', size: 'large' }
+    // );
+
+    // window.google.accounts.id.prompt();
+  };
+  
+
+//  handleCredentialResponse(response: CredentialResponse) {
+//      const token = response.credential; 
+ 
+//      fetch(`${environment.baseUrl}/auth/google-login`, {
+//        method: 'POST',
+//        headers: {
+//          'Content-Type': 'application/json'
+//        },
+//        body: JSON.stringify({ idToken: token })
+//      })
+//     .then(res => res.json()) // Parse JSON from the response
+//     .then(data => {
+//        console.log("this token ===================== : ", data); 
+//         var isValid: boolean = false;
+//         this.tokenObject = data; 
+//         if (this.tokenObject != null && this.tokenObject != '') {
+//           isValid = true;
+//           localStorage.setItem('token', this.tokenObject);       
+//         }      
+//         if (isValid) {      
+//           this.authService.authStatus.next(true);
+//           this.router.navigate(['dashboard']);
+//           // this.toastrService.success('Logged in successfully.');
+//         } else {
+//           // this.toastrService.error('Login failed. Invalid credentials.');
+//         }
+//       })
+//       .catch(error => {     
+//          this.router.navigate(['login']);    
+//          console.log("error=====") 
+//       });
+//   }   
+ 
+//  signOut(): void {
+//    this.user = null;
+//    window.google.accounts.id.disableAutoSelect();
+//  }
 
   toggleForm() {
     this.logInSignUpService.loginForm.next(!this.isLoginForm);
     this.logInSignUpService.loginForm.subscribe((value) => {
       this.isLoginForm = value;
     });
-  }
-
-  loginWithGoogle(){
-    window.location.href = environment.baseUrl+"/auth/google-login";
   }
 
   isTouched(): boolean {
@@ -90,7 +142,6 @@ export class LoginComponent implements OnInit {
     this.logInSignUpService.signIn(this.signInForm.value).subscribe({
       next: (res) => {
         this.tokenObject = res;
-        console.log("result fetch",res);
         if (this.tokenObject != null && this.tokenObject != '') {
           isValid = true;
           localStorage.setItem('token', this.tokenObject);
@@ -105,7 +156,6 @@ export class LoginComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log("result fetch",err);
         let errorMessage = JSON.parse(err.error);
          this.toastrService.show(errorMessage.Message);
         this.router.navigate(['login']);
@@ -124,5 +174,5 @@ export class LoginComponent implements OnInit {
         // this.toastrService.openCustomToast(err.error?.Message);
       },
     });
-  }
+  } 
 }

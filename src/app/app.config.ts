@@ -20,6 +20,7 @@ export const appConfig: ApplicationConfig = {
       withFetch(), // Enables Fetch API
       withInterceptorsFromDi() // Loads interceptors from DI
     ),
+    
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,

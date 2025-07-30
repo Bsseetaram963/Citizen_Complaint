@@ -21,11 +21,10 @@ export class ToasterComponent {
     this.ngZone.run(() => {
       this.message = message;
       this.isVisible = true;
-      console.log("Toast Component called show method ", message, this.isVisible);
+      // console.log("Toast Component called show method ", message, this.isVisible);
 
       clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => {
-        console.log("called setTimeout");
+      this.timeout = setTimeout(() => {    
         this.isVisible = false;
       }, 3000); // 3 seconds
     });

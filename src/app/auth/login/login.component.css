@@ -25,7 +25,7 @@
 p {
   color: white;
 }
-.googlelogin-section{
+/* .googlelogin-section{
   text-transform: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
@@ -40,8 +40,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* gap between icon and text */
-
+  gap: 10px; 
 }
 
 .google-login:hover {
@@ -51,4 +50,4 @@ p {
 .google-login img {
   width: 20px;
   height: 20px;
-}
+} */

@@ -41,8 +41,6 @@ export class NavbarComponent implements OnInit {
     this.user = this.authService.userClaims();
     const allItems = this.menuService.getMenuItems();
     this.menuItems = allItems.filter(item => item.roles.includes(this.user.role));
-    console.log("role : ",this.user.role);
-    console.log("menuItems : ",this.menuItems );
  }
 
   logout() {

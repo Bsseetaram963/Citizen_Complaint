@@ -28,7 +28,7 @@ export class MenuItemService {
           { label: 'Complaints Content', path: 'complaints' },
           { label: 'Reopen Complaint Content', path: 'reopen-complaint' }
         ],
-        roles: ['Employee']
+        roles: ['Employee','User']
       },
       {
         title: 'Ward',
